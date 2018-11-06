@@ -197,7 +197,7 @@ int main() {
   }
 
   printf("array contains 5: %d\n", contains(s_arr, 5));
-  printf("array contains 16: %d\n", contains(s_arr, 5));
+  printf("array contains 16: %d\n", contains(s_arr, 16));
 
   printf("removing last element 4 times\n");
   for (i = 0; i < 4; i++) {
