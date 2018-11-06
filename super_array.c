@@ -109,6 +109,7 @@ int main() {
   printf("\nreplacing el at index 4 with 9\n");
   s_arr = replace_element_at(s_arr, 4, 9);
   print_super_array(s_arr);
+  
 
   s_arr = delete_array(s_arr);
   return 0;
