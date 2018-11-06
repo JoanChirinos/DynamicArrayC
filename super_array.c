@@ -87,8 +87,9 @@ void print_super_array(struct super_array* s_arr) {
 }
 
 void* delete_array(struct super_array* s_arr) {
+  int* arr = s_arr->array;
   free(s_arr);
-  free(s_arr->array);
+  free(arr);
   return NULL;
 }
 
