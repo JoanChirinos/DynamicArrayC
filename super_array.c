@@ -26,8 +26,13 @@ int get_from_array(struct super_array* s_arr, int index) {
 struct super_array* add_to_array(struct super_array* s_arr, int new_int) {
   // if you'd break boundary of calloc, expand
   if (s_arr->size + 1 >= s_arr->max_size) {
+    int* new = calloc(sizeof(int), s_arr->max_size * 2);
+    int ctr;
+    for (ctr = 0; ctr < s_arr->size; ctr++) {
+      *(new + ctr) = get_from_array(s_arr, ctr);
+    }
     free(s_arr->array);
-    s_arr->array = calloc(sizeof(int), s_arr->max_size * 2);
+    s_arr->array = new;
     s_arr->max_size *= 2;
   }
   // then add to the end
@@ -86,7 +91,7 @@ int main() {
     print_super_array(s_arr);
   }
 
-  printf("\nreplacing el at index 4 with 492\n");
+  printf("\nadding 492 at index 4\n");
   s_arr = add_to_array_at(s_arr, 4, 492);
   print_super_array(s_arr);
 
