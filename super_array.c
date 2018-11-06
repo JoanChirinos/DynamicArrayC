@@ -66,6 +66,16 @@ struct super_array* add_to_array_at(struct super_array* s_arr, int index, int ne
   return s_arr;
 }
 
+struct super_array* replace_element_at(struct super_array* s_arr, int index, int new_int) {
+  // if you try to break it, don't
+  if (index >= s_arr->size) {
+    printf("invalid index. returning array unchanged\n");
+    return s_arr;
+  }
+  *(s_arr->array + index) = new_int;
+  return s_arr;
+}
+
 void print_super_array(struct super_array* s_arr) {
   int size = s_arr->size;
   int current;
@@ -93,6 +103,10 @@ int main() {
 
   printf("\nadding 492 at index 4\n");
   s_arr = add_to_array_at(s_arr, 4, 492);
+  print_super_array(s_arr);
+
+  printf("\nreplacing el at index 4 with 9\n");
+  s_arr = replace_element_at(s_arr, 4, 9);
   print_super_array(s_arr);
 
   s_arr = delete_array(s_arr);
