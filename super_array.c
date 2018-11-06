@@ -26,7 +26,8 @@ int get_from_array(struct super_array* s_arr, int index) {
 struct super_array* add_to_array(struct super_array* s_arr, int new_int) {
   // if you'd break boundary of calloc, expand
   if (s_arr->size + 1 >= s_arr->max_size) {
-    s_arr->array = realloc(s_arr->array, s_arr->max_size * 2);
+    free(s_arr->array);
+    s_arr->array = calloc(sizeof(int), s_arr->max_size * 2);
     s_arr->max_size *= 2;
   }
   // then add to the end
